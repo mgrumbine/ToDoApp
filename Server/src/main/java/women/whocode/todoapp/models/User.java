@@ -11,8 +11,8 @@ import java.util.List;
         private String username;
         private String password;
 
-        @OneToMany
-        private final List<Task> tasks = new ArrayList<>();
+//        @OneToMany
+//        private final List<Task> tasks = new ArrayList<>();
 
         public User() {
         }

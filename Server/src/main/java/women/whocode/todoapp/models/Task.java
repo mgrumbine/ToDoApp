@@ -5,11 +5,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 
-@Entity
+//@Entity
 public class Task extends AbstractEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
     private User user;
 
     private String activity;
