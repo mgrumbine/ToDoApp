@@ -1,5 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
+import About from './About';
+import Footer from './Footer';
 import BannerBackground from "../Assets/home-banner-background.png";
 import { FiArrowRight } from 'react-icons/fi';
 
@@ -19,6 +21,8 @@ const Home = () => {
     <div className='checkmark-wrapper mt-5'>
         <span className='checkmark'></span>
     </div>
+    <About />
+    <Footer />
   </div>
 };
 
