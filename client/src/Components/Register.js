@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { Avatar, Grid, Paper, Typography, TextField } from '@mui/material';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const paperStyle={padding:'30px 20px', width:300, margin:'20px auto'};
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -45,17 +48,31 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input type="text" value={username} onChange={handleUsernameChange} />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </div>
-      <button type="submit">Register</button>
-    </form>
+    <Grid>
+      <Paper elevation={20} style={paperStyle}>
+        <Grid align='center'>
+          <Avatar>
+            <AddCircleOutlineOutlinedIcon />
+          </Avatar>
+          <h2>Register</h2>
+          <Typography variant='caption'>Please fill this form to create an account</Typography>
+        </Grid>
+        <form onSubmit={handleSubmit}>
+        <TextField id="standard-basic" label="Username" variant="standard" type="text" value={username} onChange={handlePasswordChange}/>
+        <TextField id="standard-basic" label="Password" variant="standard" type="password" value={password} onChange={handleUsernameChange}  />
+          {/* <div>
+            <label>Username:</label>
+            <input type="text" value={username} onChange={handleUsernameChange} />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="password" value={password} onChange={handlePasswordChange} />
+          </div> */}
+            <button type="submit" className='register-button'>Register</button>
+        </form>
+      </Paper>
+      
+    </Grid>
   );
 };
 

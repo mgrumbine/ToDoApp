@@ -120,6 +120,22 @@ nav {
   font-size: 1.5rem;
 }
 
+.register-button {
+  padding: 0.5rem 1.5rem;
+  background-color: #CCE8DB;
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .secondary-button:hover {
   background-color: #C1D4E3;
 }
