@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Avatar, Grid, Paper, Typography, TextField } from '@mui/material';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { Grid, Paper, Typography } from '@mui/material';
+import Input from '@mui/joy/Input';
+import RegisterBackground1 from '../Assets/register-background1.png';
+import RegisterBackground2 from '../Assets/register-background2.png';
+
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -49,29 +52,49 @@ const Register = () => {
 
   return (
     <Grid>
-      <Paper elevation={20} style={paperStyle}>
+      <div className='register-banner-container'>
+    <div className='register-bannerImage-container'>
+      <img src={RegisterBackground2} alt=''/>
+    </div>
+    </div>
+    <div className='register-section-container'>
+      <div className='register-background-image-container'>
+        <img src={RegisterBackground1} alt=""></img>
+      </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '0vh' }}>
+      <Paper elevation={5} style={paperStyle}>
         <Grid align='center'>
-          <Avatar>
-            <AddCircleOutlineOutlinedIcon />
-          </Avatar>
-          <h2>Register</h2>
+          <h2 style={{ marginBottom: '20px', marginTop: '10px' }}>Register</h2>
           <Typography variant='caption'>Please fill this form to create an account</Typography>
         </Grid>
         <form onSubmit={handleSubmit}>
-        <TextField id="standard-basic" label="Username" variant="standard" type="text" value={username} onChange={handlePasswordChange}/>
-        <TextField id="standard-basic" label="Password" variant="standard" type="password" value={password} onChange={handleUsernameChange}  />
-          {/* <div>
-            <label>Username:</label>
-            <input type="text" value={username} onChange={handleUsernameChange} />
+          <div>
+          <Input
+            disabled={false}
+            placeholder="Username"
+            size="md"
+            variant="outlined"
+            style={{ marginBottom: '10px', marginTop: '20px'}}
+            type="text" value={username} onChange={handleUsernameChange}
+          />
           </div>
           <div>
-            <label>Password:</label>
-            <input type="password" value={password} onChange={handlePasswordChange} />
-          </div> */}
-            <button type="submit" className='register-button'>Register</button>
+          <Input
+            disabled={false}
+            placeholder="Password"
+            size="md"
+            variant="outlined"
+            style={{ marginBottom: '20px' }}
+            type="text" value={password} onChange={handlePasswordChange}
+          />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <button type="submit" className='register-button'>Sign Up</button>
+          </div> 
         </form>
       </Paper>
-      
+      </div>
     </Grid>
   );
 };
