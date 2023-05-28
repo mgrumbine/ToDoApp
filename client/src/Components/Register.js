@@ -7,11 +7,26 @@ import RegisterBackground2 from '../Assets/register-background2.png';
 
 const Register = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
   const [password, setPassword] = useState('');
   const paperStyle={padding:'30px 20px', width:300, margin:'20px auto'};
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const handleDateOfBirthChange = (e) => {
+    setDateOfBirth(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -23,6 +38,9 @@ const Register = () => {
 
     const userData = {
       username: username,
+      email: email,
+      phoneNumber: phoneNumber,
+      dateOfBirth: dateOfBirth,
       password: password
     };
 
@@ -40,6 +58,9 @@ const Register = () => {
         console.log('Registration successful');
         // Clear the input fields after successful registration
         setUsername('');
+        setEmail('');
+        setPhoneNumber('');
+        setDateOfBirth('');
         setPassword('');
       } else {
         // Registration failed
@@ -82,11 +103,41 @@ const Register = () => {
           <div>
           <Input
             disabled={false}
+            placeholder="Email"
+            size="md"
+            variant="outlined"
+            style={{ marginBottom: '10px', marginTop: '10px'}}
+            type="email" value={email} onChange={handleEmailChange}
+          />
+          </div>
+          <div>
+          <Input
+            disabled={false}
+            placeholder="Phone Number"
+            size="md"
+            variant="outlined"
+            style={{ marginBottom: '10px', marginTop: '10px'}}
+            type="text" value={phoneNumber} onChange={handlePhoneNumberChange}
+          />
+          </div>
+          <div>
+          <Input
+            disabled={false}
+            placeholder="Date of Birth"
+            size="md"
+            variant="outlined"
+            style={{ marginBottom: '10px', marginTop: '10px'}}
+            type="text" value={dateOfBirth} onChange={handleDateOfBirthChange}
+          />
+          </div>
+          <div>
+          <Input
+            disabled={false}
             placeholder="Password"
             size="md"
             variant="outlined"
             style={{ marginBottom: '20px' }}
-            type="text" value={password} onChange={handlePasswordChange}
+            type="password" value={password} onChange={handlePasswordChange}
           />
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
