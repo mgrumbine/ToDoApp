@@ -9,7 +9,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
-import Logo from '../Assets/logo.png';
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false)
@@ -27,7 +26,6 @@ const Navbar = () => {
   return (
   <nav>
     <div className='nav-logo-container'>
-      {/* <img src={Logo} alt='' /> */}
     </div>
     <div className='navbar-links-container'>
       <a href=''>Home</a>
