@@ -15,15 +15,14 @@ public class Task extends AbstractEntity {
     private String activity;
     private int accessibility;
     private String type;
-    private Date date;
+    private Date date = null;
     private String notes;
 
-    public Task(User user, String activity, int accessibility, String type, Date date, String notes) {
+    public Task(User user, String activity, int accessibility, String type, String notes) {
         this.user = user;
         this.activity = activity;
         this.accessibility = accessibility;
         this.type = type;
-        this.date = date;
         this.notes = notes;
     }
 
