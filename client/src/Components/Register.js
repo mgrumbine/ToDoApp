@@ -32,6 +32,13 @@ const Register = () => {
     setDateOfBirth(date);
   };
 
+  const formatForMySQL = (date) => {
+    if (!date) return null; // Handle case when no date is selected
+    return date.toISOString().slice(0, 10);
+  };
+
+  const birthday = formatForMySQL(dateOfBirth);
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -43,7 +50,7 @@ const Register = () => {
       username: username,
       email: email,
       phoneNumber: phoneNumber,
-      dateOfBirth: dateOfBirth,
+      birthday: birthday,
       password: password
     };
 
@@ -129,7 +136,9 @@ const Register = () => {
             label="Date of Birth"
             value={dateOfBirth}
             onChange={handleDateOfBirthChange}
+            dateFormat="yyyy-mm-dd"
           />
+          <p>Formatted Date: {birthday}</p>
           </div>
           <div>
           <Input
