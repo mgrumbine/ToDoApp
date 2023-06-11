@@ -138,7 +138,6 @@ const Register = () => {
             onChange={handleDateOfBirthChange}
             dateFormat="yyyy-mm-dd"
           />
-          <p>Formatted Date: {birthday}</p>
           </div>
           <div>
           <Input
@@ -146,7 +145,7 @@ const Register = () => {
             placeholder="Password"
             size="md"
             variant="outlined"
-            style={{ marginBottom: '20px' }}
+            style={{ marginBottom: '20px', marginTop: '10px' }}
             type="password" value={password} onChange={handlePasswordChange}
           />
           </div>
