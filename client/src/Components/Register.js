@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, Paper, Typography } from '@mui/material';
 import Input from '@mui/joy/Input';
+import { DatePicker } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import RegisterBackground1 from '../Assets/register-background1.png';
 import RegisterBackground2 from '../Assets/register-background2.png';
 
@@ -9,7 +12,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState(null);
   const [password, setPassword] = useState('');
   const paperStyle={padding:'30px 20px', width:300, margin:'20px auto'};
 
@@ -25,9 +28,16 @@ const Register = () => {
     setPhoneNumber(e.target.value);
   };
 
-  const handleDateOfBirthChange = (e) => {
-    setDateOfBirth(e.target.value);
+  const handleDateOfBirthChange = (date) => {
+    setDateOfBirth(date);
   };
+
+  const formatForMySQL = (date) => {
+    if (!date) return null; // Handle case when no date is selected
+    return date.toISOString().slice(0, 10);
+  };
+
+  const birthday = formatForMySQL(dateOfBirth);
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -40,7 +50,7 @@ const Register = () => {
       username: username,
       email: email,
       phoneNumber: phoneNumber,
-      dateOfBirth: dateOfBirth,
+      birthday: birthday,
       password: password
     };
 
@@ -72,6 +82,7 @@ const Register = () => {
   };
 
   return (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Grid>
       <div className='register-banner-container'>
     <div className='register-bannerImage-container'>
@@ -121,13 +132,11 @@ const Register = () => {
           />
           </div>
           <div>
-          <Input
-            disabled={false}
-            placeholder="Date of Birth"
-            size="md"
-            variant="outlined"
-            style={{ marginBottom: '10px', marginTop: '10px'}}
-            type="text" value={dateOfBirth} onChange={handleDateOfBirthChange}
+          <DatePicker 
+            label="Date of Birth"
+            value={dateOfBirth}
+            onChange={handleDateOfBirthChange}
+            dateFormat="yyyy-mm-dd"
           />
           </div>
           <div>
@@ -136,17 +145,18 @@ const Register = () => {
             placeholder="Password"
             size="md"
             variant="outlined"
-            style={{ marginBottom: '20px' }}
+            style={{ marginBottom: '20px', marginTop: '10px' }}
             type="password" value={password} onChange={handlePasswordChange}
           />
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button type="submit" className='register-button'>Sign Up</button>
-          </div> 
+          </div>
         </form>
       </Paper>
       </div>
     </Grid>
+    </LocalizationProvider>
   );
 };
 
