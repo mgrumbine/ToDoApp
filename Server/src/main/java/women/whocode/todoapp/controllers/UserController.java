@@ -15,7 +15,7 @@ public class UserController {
 
     @PostMapping("register")
     public String registerUser(@RequestBody User user) {
-        User newUser = new User(user.getUsername(), user.getPassword(), user.getEmail(), user.getPhoneNumber());
+        User newUser = new User(user.getUsername(), user.getPassword(), user.getEmail(), user.getPhoneNumber(), user.getBirthday());
         userRepository.save(newUser);
         return "New User is added";
     }
