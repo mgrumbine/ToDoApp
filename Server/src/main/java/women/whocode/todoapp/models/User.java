@@ -21,12 +21,12 @@ public class User extends AbstractEntity {
     public User() {
     }
 
-    public User(String username, String password, String email, String phoneNumber) {
+    public User(String username, String password, String email, String phoneNumber, Date date) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.birthday = null;
+        this.birthday = date;
     }
 
     public String getUsername() {
